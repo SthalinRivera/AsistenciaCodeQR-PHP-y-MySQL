@@ -34,7 +34,7 @@
 
 				</ul>
 			  </li>
-			  <li><a href="#"><span class="glyphicon glyphicon-align-justify"></span> Reportes</a></li>
+			  <li><a href="export.php"><span class="glyphicon glyphicon-align-justify"></span> Reportes</a></li>
 			  <li><a href="#"><span class="glyphicon glyphicon-time"></span> Verificar asistencia</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
