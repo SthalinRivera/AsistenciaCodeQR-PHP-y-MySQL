@@ -29,10 +29,11 @@ $genero=$_POST["genero"];
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<script type="text/javascript" src="js/instascan.min.js"></script>
-		<!-- DataTables -->
+		<!-- DataTables 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	-->
 		<link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 		<link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
 	
 
 		<style>
@@ -104,11 +105,12 @@ $genero=$_POST["genero"];
                                 <td><?php echo $row['LASTNAME'];?></td>
                                 <td><?php echo $row['AGE'];?></td>
                                 <td><?php echo $row['GENDER'];?></td>
+								
                                 <td>
                                 <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal" href="viewCard.php?id=<?php echo $row['ID'];?>"><span class="glyphicon glyphicon-eye-open"></span></button>
 
-                                <a type="button" class="btn btn-danger btn-sm" href="borrar.php?id=<?php echo $row['ID'];?>" onclick="confirmation()"> <span class="glyphicon glyphicon-trash"></span></addcslashes>
+                                <a type="button" class="btn btn-danger btn-sm" href="borrar.php?id=<?php echo $row['ID'];?>" > <span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
                         <?php
@@ -125,7 +127,31 @@ $genero=$_POST["genero"];
 						
         </div>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" >
+  Launch demo modal
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -147,19 +173,14 @@ $genero=$_POST["genero"];
 		<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 		<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<script src="sweetAlert.js"></script>
-<script>
 
-$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
-</script>
+		<script src="sweetAlert.js"></script>
+
+		<script>
+		$('#myModal').on('shown.bs.modal', function () {
+		$('#myInput').trigger('focus')
+		})
+		</script>
 		<script>
 		  $(function () {
 			$("#example1").DataTable({
